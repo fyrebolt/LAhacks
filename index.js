@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
-import { getAuth, signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
+import { getAuth, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
 import { getDatabase } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-database.js";
 
 
@@ -39,11 +39,7 @@ loginButton.onclick = (event) =>{
     const password = passwordField.value
     user = email.replaceAll(".","").replaceAll("#","").replaceAll("$",'').replaceAll("[","").replaceAll("]","")
     user = user.substring(0,user.indexOf("@"))
-    // database.ref(user+'/data').once('value').then((snapshot)=>{
-    //     data = snapshot.val()
-    //     name = data.name
-    // })
-signInWithEmailAndPassword(email, password)
+signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     localStorage.setItem("loggedIn","yes")
     localStorage.setItem("name", name)
@@ -60,7 +56,7 @@ googleLogin.onclick = (event) => {
     event.preventDefault()
     errorLabel.innerHTML = "."; 
     const provider = new GoogleAuthProvider();
-    signInWithPopup(provider).then(function(result) {
+    signInWithPopup(auth, provider).then(function(result) {
         localStorage.setItem("loggedIn","yes")
         profile = result.user.providerData[0];
         email = profile.email

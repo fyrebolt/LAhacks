@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
-import { getAuth, signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
+import { getAuth, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
 import { getDatabase } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-database.js";
 
 const firebaseConfig = {
@@ -37,7 +37,7 @@ signupButton.onclick = (event) =>{
     errorLabel.innerHTML = "."; 
     const email = emailField.value
     const password = passwordField.value
-    createUserWithEmailAndPassword(email, password)
+    createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
         localStorage.setItem("loggedIn","yes")
         localStorage.setItem("name", name)
@@ -60,7 +60,7 @@ googleLogin.onclick = (event) => {
     event.preventDefault()
     errorLabel.innerHTML = "."; 
     const provider = new GoogleAuthProvider();
-    signInWithPopup(provider).then(function(result) {
+    signInWithPopup(auth, provider).then(function(result) {
         localStorage.setItem("loggedIn","yes")
         profile = result.user.providerData[0];
         name = profile.displayName
@@ -74,7 +74,7 @@ googleLogin.onclick = (event) => {
         // }) 
     }).catch(function(error) {
         errorLabel.className="";
-        errorMessage = error.message
+        const errorMessage = error.message
         errorLabel.innerHTML = errorMessage;  
     });
 }
