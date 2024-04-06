@@ -1,16 +1,9 @@
-// Los Altos Hacks 2024
+const { dockStart } = require('node-nlp');
 
-import OpenAI from "openai";
-
-const openai = new OpenAI({ apiKey: "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"});
-
-async function main() {
-  const completion = await openai.chat.completions.create({
-    messages: [{ role: "system", content: "You are a helpful assistant." }],
-    model: "gpt-3.5-turbo",
-  });
-
-  console.log(completion.choices[0]);
-}
-
-main();
+(async () => {
+  const dock = await dockStart();
+  const nlp = dock.get('nlp');
+  await nlp.train();
+  const response = await nlp.process('en', 'Who are you');
+  console.log(response);
+})();

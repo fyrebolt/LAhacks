@@ -9,7 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "openai": "^4.33.0"
-  },
-  "type": "module"
+    "node-nlp": "^4.27.0"
+  }
 }
