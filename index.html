@@ -5,10 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="stylesheet" href="style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script defer src="https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js" type="module"></script>
-    <script defer src="https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js" type="module"></script>
-    <script defer src="https://www.gstatic.com/firebasejs/10.10.0/firebase-database.js" type="module"></script>
-    <script src="firebase.js" defer type="module"></script>
+    <script src="firebase.js" defer></script>
     <script src="index.js" defer type="module"></script>
     <title>app</title>
   </head>
@@ -28,9 +25,17 @@
                 </button>
             </div>
         </div>
+        <video id='video' loop muted autoplay>
+            <source src="backgroundvideo.mp4" type="video/mp4" />
+        </video>
     </div>
-    <div id="indexRight">
-
+    <div id="indexRight" class="col">
+        <p id="indexHead">VerifAI</p>
+        <p id="indexDesc">A browser extension that protects you against misinformation online.</p>
+        <div class="row" id="indexButton">
+            <p>Get the extension here</p>
+            <img src="chrome.png">
+        </div>
     </div>
   </body>
 </html>
