@@ -5,30 +5,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="stylesheet" href="style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="firebase.js" defer type="module"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="firebase.js" defer></script>
     <script src="index.js" defer type="module"></script>
     <title>app</title>
   </head>
   <body onload="">
-    <div id="indexLeft"></div>
-    <div id="indexRight"></div>
+    <div id="indexLeft">
+        <div id="loginBox">
+            <div id="loginFields" class="col">
+                <p id="loginHeader">Log In</p>
+                <input id="emailField" type="email" placeholder="Email">
+                <input id="passwordField" type="password" placeholder="Password">
+                <p id="loginSubmit">Continue</p>
+                <h1 id="errorLabel" class="hidden">.</h1>
+                <a id="need" href="register.html">Need an account?</a>
+                <button id="googleLoginBox" class="row">
+                    <img src="images/googlelogo.png"></img>
+                    <h2>Log in with Google</h2>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div id="indexRight">
 
-    <h1>create user (test)</h1>
-    <form onsubmit="createUser('test@gmail.com', 'test')">
-      <label for="cu1">Email</label>
-      <input type="text" id="cu1" name="cu1" placeholder="email">
-      <label for="cu2">Password</label>
-      <input type="text" id="cu2" name="cu2">
-      <input type="submit">
-    </form>
-
-    <h1>sign in (test)</h1>
-    <form onsubmit="signIn('test@gmail.com', 'test')">
-      <label for="si1">Email</label>
-      <input type="text" id="si1" name="si1">
-      <label for="si2">Password</label>
-      <input type="text" id="si2" name="si2">
-      <input type="submit>
-    </form>
+    </div>
   </body>
 </html>
