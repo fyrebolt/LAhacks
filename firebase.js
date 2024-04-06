@@ -1,6 +1,8 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
 import {} from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
 import {} from "https://www.gstatic.com/firebasejs/10.10.0/firebase-database.js";
+import {} from "firebase/database";
+import { getDatabase } from "firebase/database";
 import { GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
 
 const firebaseConfig = {
@@ -14,7 +16,7 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const database = getDatabase();
+const database = getDatabase(app);
 
 const auth = getAuth();
 
