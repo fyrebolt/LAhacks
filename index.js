@@ -44,7 +44,7 @@ loginButton.onclick = (event) =>{
     //     data = snapshot.val()
     //     name = data.name
     // })
-auth.signInWithEmailAndPassword(email, password)
+signInWithEmailAndPassword(email, password)
   .then((userCredential) => {
     localStorage.setItem("loggedIn","yes")
     localStorage.setItem("name", name)
@@ -61,7 +61,7 @@ googleLogin.onclick = (event) => {
     event.preventDefault()
     errorLabel.innerHTML = "."; 
     const provider = new GoogleAuthProvider();
-    auth.signInWithPopup(provider).then(function(result) {
+    signInWithPopup(provider).then(function(result) {
         localStorage.setItem("loggedIn","yes")
         profile = result.user.providerData[0];
         email = profile.email
