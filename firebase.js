@@ -19,59 +19,38 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = firebase.database();
 
-
-// function check(){
-//   if(localStorage.getItem("loggedIn")!="yes"){
-//       window.location.href = "index.html";
-//   }
-//     email = localStorage.getItem("user")
-//     user = email.replaceAll(".","").replaceAll("#","").replaceAll("$",'').replaceAll("[","").replaceAll("]","")
-//     user = user.substring(0,user.indexOf("@"))
-//     database.ref(user+'/custom').once('value').then((snapshot)=>{
-//         current = snapshot.val()
-//         if (current == null){
-//             current = []
-//             sessionStorage.setItem("workout", ["null"])
-//         }
-//         else {
-//             current = current.array
-//             sessionStorage.setItem("workout", current)
-//         }
-//     })
-// }
-
-// function checkIndex(){
-//   if(localStorage.getItem("loggedIn")=="yes"){
-//       window.location.href = "home.html";
-//   }
-// }
-
 const auth = getAuth();
 
 // Email and password parameters can be passed over from html forms
 
-createUserWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    // Signed up 
-    const user = userCredential.user;
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // ..
-  });
+function createUser(email, password) {
+  createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Signed up 
+      const user = userCredential.user;
+      // ...
+      console.log(`Logged in as ${user}`)
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // ..
+    });
+}
 
-signInWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    // Signed in 
-    const user = userCredential.user;
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-  });
+function signIn(email, password) {
+  signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Signed in 
+      const user = userCredential.user;
+      // ...
+      console.log(`Signed in as ${user}`)
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+    });
+}
 
 onAuthStateChanged(auth, (user) => {
   if (user) {
