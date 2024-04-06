@@ -45,9 +45,9 @@ signupButton.onclick = (event) =>{
         localStorage.setItem("user", email)
         user = email.replaceAll(".","").replaceAll("#","").replaceAll("$",'').replaceAll("[","").replaceAll("]","")
         user = user.substring(0,user.indexOf("@"))
-        database.ref(user+'/data').set({"name": name}).then(()=>{
-            window.location.href="home.html"
-        })    
+        // database.ref(user+'/data').set({"name": name}).then(()=>{
+        //     window.location.href="home.html"
+        // })    
     })
     .catch((error) => {
         errorLabel.className="";
@@ -60,7 +60,7 @@ signupButton.onclick = (event) =>{
 googleLogin.onclick = (event) => {
     event.preventDefault()
     errorLabel.innerHTML = "."; 
-    provider = new GoogleAuthProvider();
+    const provider = new GoogleAuthProvider();
     auth.signInWithPopup(provider).then(function(result) {
         localStorage.setItem("loggedIn","yes")
         profile = result.user.providerData[0];
@@ -70,9 +70,9 @@ googleLogin.onclick = (event) => {
         localStorage.setItem("user", email)
         user = email.replaceAll(".","").replaceAll("#","").replaceAll("$",'').replaceAll("[","").replaceAll("]","")
         user = user.substring(0,user.indexOf("@"))
-        database.ref(user+'/data').set({"name": name}).then(()=>{
-            window.location.href="home.html"
-        }) 
+        // database.ref(user+'/data').set({"name": name}).then(()=>{
+        //     window.location.href="home.html"
+        // }) 
     }).catch(function(error) {
         errorLabel.className="";
         errorMessage = error.message
