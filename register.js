@@ -20,7 +20,7 @@ signupButton.onclick = (event) =>{
     errorLabel.innerHTML = "."; 
     const email = emailField.value
     const password = passwordField.value
-    const name = nameField.value
+    // const name = nameField.value
     firebase.auth().createUserWithEmailAndPassword(email, password)
     .then((userCredential) => {
         localStorage.setItem("loggedIn","yes")
