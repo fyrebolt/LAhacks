@@ -1,6 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
-import {} from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
+import {getAuth} from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
 import {} from "https://www.gstatic.com/firebasejs/10.10.0/firebase-database.js";
+import { getDatabase } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-database.js";
 import { GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
 
 const firebaseConfig = {
@@ -13,10 +14,10 @@ const firebaseConfig = {
   appId: "1:1054684978705:web:0403789073974326321bb0"
 };
 
-const app = initializeApp(firebaseConfig);
-const database = getDatabase();
 
-const auth = getAuth();
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
+const auth = getAuth(app);
 
 // Email and password parameters can be passed over from html forms
 
