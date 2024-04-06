@@ -5,6 +5,5 @@
     "version": "1.0",
     "action": {
       "default_popup": "extension.html",
-      "default_icon": "icon.png"
     }
   }
