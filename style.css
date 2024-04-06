@@ -10,10 +10,18 @@ body{
 }
 div{
     display:flex;
+    margin:0px;
 }
 .row{
     flex-direction:row;
 }
 .col{
     flex-direction:column;
+}
+#indexLeft{
+    width:60%;
+    background-color: black;
+}
+#indexRight{
+    width:40%;
 }
