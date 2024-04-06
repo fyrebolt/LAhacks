@@ -58,9 +58,9 @@ googleLogin.onclick = (event) => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider).then(function(result) {
         localStorage.setItem("loggedIn","yes")
-        profile = result.user.providerData[0];
-        email = profile.email
-        name = profile.displayName
+        const profile = result.user.providerData[0];
+        const email = profile.email
+        const name = profile.displayName
         localStorage.setItem("name", name)
         localStorage.setItem("user", email)
         window.location.href = "home.html"

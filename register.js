@@ -50,7 +50,7 @@ signupButton.onclick = (event) =>{
     })
     .catch((error) => {
         errorLabel.className="";
-        errorMessage = error.message
+        const errorMessage = error.message
         errorLabel.innerHTML = errorMessage;    
     })
 }
@@ -62,9 +62,9 @@ googleLogin.onclick = (event) => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider).then(function(result) {
         localStorage.setItem("loggedIn","yes")
-        profile = result.user.providerData[0];
-        name = profile.displayName
-        email = profile.email
+        const profile = result.user.providerData[0];
+        const name = profile.displayName
+        const email = profile.email
         localStorage.setItem("name", name)
         localStorage.setItem("user", email)
         user = email.replaceAll(".","").replaceAll("#","").replaceAll("$",'').replaceAll("[","").replaceAll("]","")
