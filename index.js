@@ -1,4 +1,7 @@
-
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
+import {} from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
+import {} from "https://www.gstatic.com/firebasejs/10.10.0/firebase-database.js";
+import { GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
 
 const loginButton = document.getElementById('loginSubmit');
 const emailField = document.getElementById("emailField")
@@ -41,7 +44,7 @@ auth.signInWithEmailAndPassword(email, password)
 googleLogin.onclick = (event) => {
     event.preventDefault()
     errorLabel.innerHTML = "."; 
-    provider = new auth.GoogleAuthProvider();
+    provider = new GoogleAuthProvider();
     auth.signInWithPopup(provider).then(function(result) {
         localStorage.setItem("loggedIn","yes")
         profile = result.user.providerData[0];
