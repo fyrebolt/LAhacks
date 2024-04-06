@@ -5,6 +5,7 @@ const emailField = document.getElementById("emailField")
 var passwordField = document.getElementById("passwordField")
 const googleLogin = document.getElementById('googleLoginBox')
 const errorLabel = document.getElementById('errorLabel')
+let user;
 
 passwordField.addEventListener("keypress", function(event) {
   if (event.key === "Enter") {
