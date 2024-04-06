@@ -17,8 +17,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
-
-const auth = getAuth();
+const auth = getAuth(app);
 
 // Email and password parameters can be passed over from html forms
 
