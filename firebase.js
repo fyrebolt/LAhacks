@@ -1,4 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
+import {} from 'firebase/auth';
+import {} from 'firebase/database'
 const firebaseConfig = {
   apiKey: "AIzaSyAtEWmEswnxOur3OIBAWX1oZ82aPY9-yfE",
   authDomain: "lahacks8.firebaseapp.com",
@@ -10,7 +12,7 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const database = firebase.database();
+const database = getDatabase();
 
 const auth = getAuth();
 

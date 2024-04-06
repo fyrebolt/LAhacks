@@ -24,7 +24,7 @@ loginButton.onclick = (event) =>{
         data = snapshot.val()
         name = data.name
     })
-firebase.auth().signInWithEmailAndPassword(email, password)
+auth.signInWithEmailAndPassword(email, password)
   .then((userCredential) => {
     localStorage.setItem("loggedIn","yes")
     localStorage.setItem("name", name)
@@ -40,8 +40,8 @@ firebase.auth().signInWithEmailAndPassword(email, password)
 googleLogin.onclick = (event) => {
     event.preventDefault()
     errorLabel.innerHTML = "."; 
-    provider = new firebase.auth.GoogleAuthProvider();
-    firebase.auth().signInWithPopup(provider).then(function(result) {
+    provider = new auth.GoogleAuthProvider();
+    auth.signInWithPopup(provider).then(function(result) {
         localStorage.setItem("loggedIn","yes")
         profile = result.user.providerData[0];
         email = profile.email

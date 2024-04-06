@@ -19,8 +19,7 @@ signupButton.onclick = (event) =>{
     errorLabel.innerHTML = "."; 
     const email = emailField.value
     const password = passwordField.value
-    // const name = nameField.value
-    firebase.auth().createUserWithEmailAndPassword(email, password)
+    auth.createUserWithEmailAndPassword(email, password)
     .then((userCredential) => {
         localStorage.setItem("loggedIn","yes")
         localStorage.setItem("name", name)
@@ -42,8 +41,8 @@ signupButton.onclick = (event) =>{
 googleLogin.onclick = (event) => {
     event.preventDefault()
     errorLabel.innerHTML = "."; 
-    provider = new firebase.auth.GoogleAuthProvider();
-    firebase.auth().signInWithPopup(provider).then(function(result) {
+    provider = new auth.GoogleAuthProvider();
+    auth.signInWithPopup(provider).then(function(result) {
         localStorage.setItem("loggedIn","yes")
         profile = result.user.providerData[0];
         name = profile.displayName
