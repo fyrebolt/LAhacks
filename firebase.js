@@ -1,8 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
 import {} from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
 import {} from "https://www.gstatic.com/firebasejs/10.10.0/firebase-database.js";
-import {} from "firebase/database";
-import { getDatabase } from "firebase/database";
+import { getDatabase } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-database.js";
 import { GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
 
 const firebaseConfig = {
@@ -14,6 +13,7 @@ const firebaseConfig = {
   messagingSenderId: "1054684978705",
   appId: "1:1054684978705:web:0403789073974326321bb0"
 };
+
 
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
