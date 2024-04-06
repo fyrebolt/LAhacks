@@ -49,6 +49,9 @@ const database = firebase.database();
 
 const auth = getAuth();
 
+// All three of these functions need an email and password parameters, which can be passed over from the 
+// HTML forms 
+
 createUserWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     // Signed up 
