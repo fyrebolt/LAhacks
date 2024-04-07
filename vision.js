@@ -105,7 +105,7 @@ for (let i = 0; i < predictions.length; i += 1) {
     const keypoint = prediction.landmarks[j];
     fill(255,255,255);
 
-
+    textSize(12)
     text((String(j) + ": " + String(distance(avgX, avgY, keypoint[0], keypoint[1]))),keypoint[0], keypoint[1] + 20);
     
 
