@@ -99,7 +99,7 @@ button{
 }
 #frame{
     background-color: white;
-    height:50%;
+    height:60%;
     width:100%;
 }
 #subtitle{
@@ -136,7 +136,7 @@ button{
 }
 #dictionary{
     background-color:rgba(0,17,34,255);
-    height:40%;
+    height:30%;
     width:50%;
     justify-content:space-evenly;
     align-items:start;
