@@ -70,7 +70,7 @@ function draw() {
         textFont('Verdana');
         filter(BLUR, 8);
         textAlign(CENTER);
-        Stroke(0, 0, 0)
+        stroke(0, 0, 0)
         text('Loading...', 340, 240);
     } else {
     drawKeypoints()
