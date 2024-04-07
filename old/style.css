@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap');
+html{
+    height:100%;
+}
+body{
+    margin:0px;
+    height:100%;
+    display:flex;
+    font-family: "Red Hat Display";
+}
+p{
+    margin:0px;
+}
+div{
+    display:flex;
+    margin:0px;
+}
+button{
+    display:flex;
+    margin:0px;
+}
+.row{
+    flex-direction:row;
+}
+.col{
+    flex-direction:column;
+}
+#indexLeft{
+    width:50%;
+    justify-content:center;
+    align-items:center;
+    height:100%;
+}
+#loginBox{
+    height:100%;
+    width:60%;
+    justify-content: center;
+    align-items:center;
+}
+#loginHeader{
+    font-size:24px;
+    font-weight:bold;
+}
+#loginFields{
+    width:100%;
+    background-color:white;
+    align-items:center;
+    justify-content: center;
+    padding:20px 10px;
+    border-radius:10px;
+    height:70%;
+}
+#loginFields input{
+    width:85%;
+    font-size:16px;
+    background-color:rgba(0,0,0,0);
+    border:none;
+    margin:20px 0px;
+    padding:10px 0px;
+    border-bottom: 2px solid rgb(110, 110, 110);
+}
+#loginFields input:focus{
+    outline:none;
+    border-bottom: 2px solid #6968be;
+}
+#loginFields a{
+    text-decoration:none;
+}
+#loginSubmit{
+    font-size:18px;
+    margin:5px;
+    color:white;
+    border-radius:30px;
+    background-color:rgb(0, 0, 0);
+    padding:10px 20px;
+    font-weight:500;
+    transition: background-color 0.3s;
+}
+#loginSubmit:hover{
+    background-color:rgb(87, 86, 86);
+}
+#loginFields a:hover{
+    text-decoration:underline;
+}
+#forgot{
+    font-weight:bold;
+    color:#6968be;
+    font-size:18px;
+    margin:5px 0px;
+}
+#forgot:hover{
+    text-decoration:underline;
+}
+#need{
+    color:black;
+    font-size:20px;
+}
+#loginFields h2{
+    font-size:16px;
+    color:rgb(82, 155, 82);
+    font-weight:normal;
+}
+#errorLabel{
+    margin:5px 0px;
+    font-size:18px;
+    font-weight:normal;
+    color:red;
+}
+#googleLoginBox{
+    width:80%;
+    align-items:stretch;
+    margin:20px 0px;
+    justify-content:center;
+    padding:10px;
+    background-color:rgba(0,0,0,0);
+    border-radius:15px;
+    border:solid 2px black;
+}
+#googleLoginBox h2{
+    margin:0px;
+    font-weight:normal;
+    color:black;
+    font-size:16px;
+    font-family: "Red Hat Display";
+}
+#googleLoginBox img{
+    width:25px;
+    margin:0px 5px;
+}
+#indexRight{
+    width:50%;
+    height:100%;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    background-color:white;
+}
+#indexHead{
+    font-weight:bold;
+    font-size:60px;
+    color:rgb(49, 49, 49);
+    margin:20px;
+}
+#indexDesc{
+    font-size:24px;
+    color:rgb(49, 49, 49);
+    margin:20px 20px;
+}
+#indexButton{
+    background-color:rgb(169, 221, 169);
+    border-radius:20px;
+    width:65%;
+    align-items:center;
+    justify-content:center;
+    padding:5px;
+    margin:40px 0px 0px 0px;
+}
+#indexButton img{
+    width:25px;
+    margin:0px 5px;
+}
+#indexButton p{
+    font-size:18px;
+    color:rgb(49, 49, 49);
+}
+video {
+    filter: brightness(80%);
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+}
+.hidden{
+    opacity:0;
+}
