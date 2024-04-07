@@ -1,38 +1,14 @@
+let handpose;
 let video;
-let poseNet;
-let pose;
-let inView = 1
-let ticks = 0
+let predictions = [];
+let sparkleArray = [];
 
 const timer = document.getElementById("timer")
 const currentStretch = document.getElementById("currentStretch")
 const nextStretch = document.getElementById("nextStretch")
 const accuracy = document.getElementById("accuracy")
 const done2 = document.getElementById("done2")
-done2.onclick = (event) =>{
-    event.preventDefault()
-    window.location.href="home.html"
-}
-errors = [100, 100, 100, 100, 100, 100, 100, 100, 100, 100]
 
-cameraOn = 1
-dotSize = 15
-myWorkouts = sessionStorage.getItem("workout").split(",")
-    if (myWorkouts[0]=="null"){
-        myWorkouts.push("warrior2")
-    }
-
-function visionLoad(){
-    if(localStorage.getItem("loggedIn")!="yes"){
-        window.location.href = "index.html";
-    }
-    myWorkouts = sessionStorage.getItem("workout").split(",")
-    if (myWorkouts[0]=="null"){
-        myWorkouts.push("warrior2")
-    }
-}
-
-time = 15
 workoutIdeals = {
     "butterfly": [40, 40, 74, 100, 100],
     "downwarddog": [160, 160, 125, 25, 25],
@@ -48,20 +24,25 @@ workoutIdeals = {
 }
 
 
-currentStretch.innerHTML = toDisplay(myWorkouts[0])
-if (myWorkouts.length > 1){
-    nextStretch.innerHTML = toDisplay(myWorkouts[1])
-} else{
-    nextStretch.innerHTML = "Workout complete!"
-}
+currentStretch.innerHTML = "0"
+
+nextStretch.innerHTML = "six"
 
 function setup() {
-    var canvas = createCanvas(680, 480);
-    canvas.parent('workoutTop')
-    video = createCapture(VIDEO)
-    video.hide()
-    poseNet = ml5.poseNet(video, modelLoaded)
-    poseNet.on('pose', gotPoses)
+    createCanvas(640, 480);
+    video = createCapture(VIDEO);
+    video.size(windowWidth, windowHeight);
+  
+    handpose = ml5.handpose(video, modelReady);
+  
+    // This sets up an event that fills the global variable "predictions"
+    // with an array every time new hand poses are detected
+    handpose.on("predict", results => {
+      predictions = results;
+    });
+  
+    // Hide the video element, and just show the canvas
+    video.hide();
   }
 
 function getDist(pose, currWorkout, checkTo){
@@ -92,74 +73,8 @@ function getDist(pose, currWorkout, checkTo){
     return Math.sqrt(diff)
 }
 
-function checkDots(pose){
-    allGood = true;
-    Lespos = [pose.nose.confidence, pose.rightHip.confidence, pose.leftHip.confidence, 
-              pose.rightShoulder.confidence, pose.leftShoulder.confidence, pose.rightKnee.confidence, 
-              pose.leftKnee.confidence, pose.rightAnkle.confidence, pose.leftAnkle.confidence]
-    for (let i = 0; i<Lespos.length; i++){
-        if (Lespos[i] < 0.1){
-            
-            allGood = false;
-            break
-        }
-    }
-    if (allGood == true){
-        
-    }
-}
 
-function gotPoses(poses){
-    //console.log(poses)
-    if (poses.length > 0){
-        inView = 1
-        pose = poses[0].pose;
-        checkDots(pose)
-        checkTo=5;
-        if(myWorkouts[0]=="easy" || myWorkouts[0]=="triangle" || myWorkouts[0]=="tree"){
-            checkTo=3
-        }
-        errors.shift()
-        errors.push(getDist(pose, workoutIdeals[myWorkouts[0]], checkTo))
-        avg = 0
-        for (let i = 0; i<errors.length; i++){
-            avg += errors[i]
-        }
-        if (avg < 400){
-            time -= 0.15
-        } else{
-            time -= 0.01
-        }
-        ticks += 1;
-        
-        timer.innerHTML = "Time Remaining: " + Math.round(time)
-        if (time <= 0.2){
-            pushStretchR(myWorkouts[0], ticks);
-            myWorkouts.shift(1)
-            time=15
-            if (myWorkouts.length == 0){
-                document.getElementById('workoutTop').style.display = "none"
-                document.getElementById('workoutBottom').style.display = "none"
-                document.getElementById('workoutDone').style.display = "flex"
-            } 
-            else{
-                currentStretch.innerHTML = toDisplay(myWorkouts[0])
-                if (myWorkouts.length > 1){
-                    nextStretch.innerHTML = toDisplay(myWorkouts[1])
-                } else{
-                    nextStretch.innerHTML = "Workout complete!"
-                }
-                //stretchesLeft.innerHTML = myWorkouts.length
-            }
-        }
-    } else{
-        inView = 0
-        
-        
-    }
-}
-
-function modelLoaded(){
+function modelReady(){
     console.log("loaded")
 }
 
@@ -172,56 +87,40 @@ function getAngle(Ax, Ay, Bx, By, Cx, Cy){
     return 57.3 * Math.acos((a**2 + b**2 - c**2) / (2 * a * b))
 }
 
-  function draw() {
-    if (cameraOn == 1){
-        background(220);
-        image(video, 0, 0)
-        avg=0
-        for (let i = 0; i<errors.length; i++){
-            avg += errors[i]
-        }
-        // fill(0, 255, 0)
-        // rect(640, (time)*32, 659, 459)
-        if (avg < 400){
-            fill(0,255,0)
-        } else{
-            fill(255,0,0)
-        }
-        if (pose) {
-            ellipse(pose.nose.x, pose.nose.y, dotSize)
-            ellipse((pose.rightHip.x + pose.leftHip.x)/2, (pose.rightHip.y + pose.leftHip.y)/2, dotSize)
+function draw() {
+    image(video, 0, 0, width, height);
+  
+    // We can call both functions to draw all keypoints and the skeletons
+}
 
-            ellipse(pose.rightWrist.x, pose.rightWrist.y, dotSize)
-            ellipse(pose.leftWrist.x, pose.leftWrist.y, dotSize)
-            
-            ellipse(pose.rightShoulder.x, pose.rightShoulder.y, dotSize)
-            ellipse(pose.leftShoulder.x, pose.leftShoulder.y, dotSize)
-            
-            ellipse(pose.rightKnee.x, pose.rightKnee.y, dotSize)
-            ellipse(pose.leftKnee.x, pose.leftKnee.y, dotSize)
-
-            ellipse(pose.rightAnkle.x, pose.rightAnkle.y, dotSize)
-            ellipse(pose.leftAnkle.x, pose.leftAnkle.y, dotSize)
-
-            ellipse(pose.rightHip.x, pose.rightHip.y, dotSize)
-            ellipse(pose.leftHip.x, pose.leftHip.y, dotSize)
-
-            //fill(0, 0, 0)
-            //strokeWeight(5)
-            //line(pose.nose.x, pose.nose.y,(pose.rightHip.x + pose.leftHip.x)/2, (pose.rightHip.y + pose.leftHip.y)/2)
-
-        } 
-        fill(0, 180, 0)
-        rect(640, (time)*32, 659, 459)
-        if(inView==0){
-            fill(255, 255, 255)
-            textSize(42)
-            textFont('Verdana');
-            filter(BLUR, 8);
-            textAlign(CENTER);
-            text('Please Enter Frame', 340, 240);
-        }
-    } 
-    
-  }
-
+function drawKeypoints() {
+good = [0, 1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19]
+for (let i = 0; i < predictions.length; i += 1) {
+    const prediction = predictions[i];
+    const keypoint0 = prediction.landmarks[0];
+    const keypoint2 = prediction.landmarks[2];
+    const keypoint5 = prediction.landmarks[5];
+    const keypoint9 = prediction.landmarks[9];
+    const keypoint13 = prediction.landmarks[13];
+    const keypoint17 = prediction.landmarks[17];
+    line(keypoint0[0], keypoint0[1], keypoint17[0], keypoint17[1])
+    line(keypoint13[0], keypoint13[1], keypoint17[0], keypoint17[1])
+    line(keypoint13[0], keypoint13[1], keypoint9[0], keypoint9[1])
+    line(keypoint9[0], keypoint9[1], keypoint5[0], keypoint5[1])
+    line(keypoint5[0], keypoint5[1], keypoint2[0], keypoint2[1])
+    for (let j = 0; j < prediction.landmarks.length; j += 1) {
+    console.log(prediction.landmarks.length)
+    const keypoint = prediction.landmarks[j];
+    fill(0,0,0);
+    text(j,keypoint[0], keypoint[1] + 20);
+    //console.log(i)
+    if (good.includes(j)){
+        const keypoint1 = prediction.landmarks[j+1];
+        line(keypoint[0], keypoint[1], keypoint1[0], keypoint1[1])
+    }
+    stroke(255,150,0);
+    ellipse(keypoint[0], keypoint[1], 10, 10);
+    // ellipse(keypoint[0], keypoint[1], 10, 10);
+    }
+}
+}
