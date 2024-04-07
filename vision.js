@@ -32,7 +32,7 @@ function setup() {
     createCanvas(640, 480);
     video = createCapture(VIDEO);
     video.size(windowWidth, windowHeight);
-  
+    console.log("setup")
     handpose = ml5.handpose(video, modelReady);
   
     // This sets up an event that fills the global variable "predictions"
@@ -89,8 +89,8 @@ function getAngle(Ax, Ay, Bx, By, Cx, Cy){
 
 function draw() {
     image(video, 0, 0, width, height);
-  
-    // We can call both functions to draw all keypoints and the skeletons
+    console.log("draw")
+    drawKeypoints()
 }
 
 function drawKeypoints() {
