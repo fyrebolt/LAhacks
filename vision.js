@@ -140,6 +140,7 @@ for (let i = 0; i < predictions.length; i += 1) {
     if (goodDistance.includes(j)){
         myList.push(distance(avgX, avgY, keypoint[0], keypoint[1]))
     }
+    textSize(12);
     text((String(j) + ": " + String(distance(avgX, avgY, keypoint[0], keypoint[1]))),keypoint[0], keypoint[1] + 20);
     
 
