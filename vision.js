@@ -46,7 +46,7 @@ function compare(myList) {
         let temp = 0;
         for (let j = 1; j < current.length; j++){
             temp += ((current[j] / current[0] - letterIdeals[i][j] / letterIdeals[i][0]) / (letterIdeals[i][j] / letterIdeals[i][0])) ** 2;
-            console.log(String.fromCharCode('a'.charCodeAt(0) + i) + "," + j + ": " + ((current[j] / current[0] - letterIdeals[i][j] / letterIdeals[i][0]) / (letterIdeals[i][j] / letterIdeals[i][0])) ** 2;
+            console.log(String.fromCharCode('a'.charCodeAt(0) + i) + "," + j + ": " + ((current[j] / current[0] - letterIdeals[i][j] / letterIdeals[i][0]) / (letterIdeals[i][j] / letterIdeals[i][0])) ** 2);
         }
 
         if (temp < min){
@@ -62,6 +62,7 @@ function compare(myList) {
 
 function setup() {
     createCanvas(640, 480);
+    canvas.parent('frame');
     video = createCapture(VIDEO);
     video.size(windowWidth, windowHeight);
     console.log("setup")
