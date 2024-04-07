@@ -110,7 +110,7 @@ button{
 }
 #subtitle{
     background-color:rgba(0,17,34,255);
-/*     //border-top: solid rgb(252, 255, 209) 4px; */
+/* border-top: solid rgb(252, 255, 209) 4px;  */
     border-bottom: solid rgb(252, 255, 209) 2px;
     height:15%;
     font-size:18px;
