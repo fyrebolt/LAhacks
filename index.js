@@ -71,9 +71,9 @@ button.onclick = async (event) => {
         page2.style.display = "flex";
         setTimeout(function(){
             page2.style.transform = "translateY(0vh)"; 
-            window.location = 'vision.html'
+            //window.location = 'vision.html'
         }, 750)
-        window.location = 'vision.html'
+        //window.location = 'vision.html'
     }, 750)
     
     
