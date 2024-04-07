@@ -3,12 +3,15 @@ html{
     height:100%;
 }
 body{
+    color: white;
     margin:0px;
     height:100%;
     display:flex;
     font-family: "Red Hat Display";
-    background: rgb(244,255,101);
-    background: linear-gradient(135deg, rgba(244,255,101,1) 0%, rgba(255,124,230,1) 100%);
+    background: url(background.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 p{
     margin:0px;
@@ -41,13 +44,13 @@ button{
     margin:10px 10px;
     font-size:45px;
     font-weight:900;
-    color:rgb(48, 48, 48);
+    /* color:rgb(48, 48, 48); */
 }
 #appDesc{
     margin:10px 10px;
     font-size:24px;
     font-weight:600;
-    color:rgb(48, 48, 48);
+    /* color:rgb(48, 48, 48); */
 }
 #button{
     padding:10px;
@@ -58,7 +61,7 @@ button{
     margin:40px 0px 0px 0px;
     font-size:20px;
     font-weight:bold;
-    color:rgb(252, 255, 209);
+color: white;
     background: rgb(78,78,78);
 background: linear-gradient(135deg, rgba(78,78,78,1) 0%, rgba(40,40,40,1) 100%);
     border:none;
@@ -69,7 +72,7 @@ background: linear-gradient(135deg, rgba(78,78,78,1) 0%, rgba(40,40,40,1) 100%);
     margin:10px;
 }
 #page2{
-    background-color:white;
+    background-color:#001122;
     height:100%;
     
 }
