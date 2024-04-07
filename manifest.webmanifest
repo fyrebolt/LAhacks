@@ -1,0 +1,13 @@
+{
+    "name": "App Name",
+    "start_url": "/LAhacks/index.html",
+    "scope": "/LAhacks/",
+    "display": "standalone", 
+    "icons": [
+        {
+          "src": "images/logo.png",
+          "type": "image/png",
+          "sizes": "700x700"
+        }
+    ]
+  }
