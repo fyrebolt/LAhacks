@@ -106,7 +106,7 @@ for (let i = 0; i < predictions.length; i += 1) {
     xStrings = ""
     yStrings = ""
     for (let j = 0; j < averagePoints.length; j += 1) {
-        const keypoint = prediction.landmarks[j];
+        const keypoint = prediction.landmarks[averagePoints[j]];
         avgX += keypoint[0]
         xStrings += String(Math.round(keypoint[0])) + ", " 
         avgY += keypoint[1]
