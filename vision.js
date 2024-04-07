@@ -2,6 +2,7 @@ let handpose;
 let video;
 let predictions = [];
 let sparkleArray = [];
+let loadeded = false;
 
 const timer = document.getElementById("timer")
 const currentStretch = document.getElementById("currentStretch")
@@ -45,37 +46,9 @@ function setup() {
     video.hide();
   }
 
-function getDist(pose, currWorkout, checkTo){
-    angles = [0, 0, 0, 0, 0]
-    diff=0;
-    angles[3] = getAngle(pose.rightWrist.x, pose.rightWrist.y, 
-        pose.rightShoulder.x, pose.rightShoulder.y, 
-        pose.rightHip.x, pose.rightHip.y)
-    angles[4] = getAngle(pose.leftWrist.x, pose.leftWrist.y, 
-        pose.leftShoulder.x, pose.leftShoulder.y, 
-        pose.leftHip.x, pose.leftHip.y)
-    angles[0] = getAngle(pose.rightHip.x, pose.rightHip.y, 
-        pose.rightKnee.x, pose.rightKnee.y, 
-        pose.rightAnkle.x, pose.rightAnkle.y)
-    angles[1] = getAngle(pose.leftHip.x, pose.leftHip.y, 
-        pose.leftKnee.x, pose.leftKnee.y, 
-        pose.leftAnkle.x, pose.leftAnkle.y)
-    angles[2] = getAngle(pose.leftKnee.x, pose.leftKnee.y,
-        pose.leftHip.x, pose.leftHip.y, 
-        pose.leftShoulder.x, pose.leftShoulder.y)
-    //console.log(angles[2])
-    for (let i=0; i<checkTo; i++){
-        //console.log((angles[i] - currWorkout[i]))
-        diff += (angles[i] - currWorkout[i])**2
-    }
-    proximity = 100 / (1 + 0.05 * Math.pow(1.1, Math.sqrt(diff)-35))
-    accuracy.innerHTML = Math.round(proximity * 100) / 100
-    return Math.sqrt(diff)
-}
-
-
 function modelReady(){
     console.log("loaded")
+    loadeded = true;
 }
 
 function distance(x1, y1, x2, y2) {
@@ -91,7 +64,17 @@ function getAngle(Ax, Ay, Bx, By, Cx, Cy){
 
 function draw() {
     image(video, 0, 0, width, height);
+    if(!loadeded){
+        fill(255, 255, 255)
+        textSize(42)
+        textFont('Verdana');
+        filter(BLUR, 8);
+        textAlign(CENTER);
+        Stroke(0, 0, 0)
+        text('Loading...', 340, 240);
+    } else {
     drawKeypoints()
+    }
 }
 
 function drawKeypoints() {
