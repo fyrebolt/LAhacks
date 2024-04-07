@@ -113,13 +113,13 @@ function draw() {
 let speed = 39;
 document.getElementById("slider").onchange = () =>{
     if(document.getElementById("slider").value == 0){
-        speed = 18
+        speed = 59
     }
     else if(document.getElementById("slider").value == 1){
         speed = 39
     }
     else{
-        speed = 59
+        speed = 18
     }
 }
 function drawKeypoints() {
