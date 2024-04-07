@@ -3,11 +3,11 @@ let video;
 let predictions = [];
 let sparkleArray = [];
 
-const timer = document.getElementById("timer")
-const currentStretch = document.getElementById("currentStretch")
-const nextStretch = document.getElementById("nextStretch")
-const accuracy = document.getElementById("accuracy")
-const done2 = document.getElementById("done2")
+// const timer = document.getElementById("timer")
+// const currentStretch = document.getElementById("currentStretch")
+// const nextStretch = document.getElementById("nextStretch")
+// const accuracy = document.getElementById("accuracy")
+// const done2 = document.getElementById("done2")
 
 letterIdeals = [
     [100, 180, 70, 20, 60, 120], //a
@@ -39,9 +39,9 @@ letterIdeals = [
 ]
 
 
-currentStretch.innerHTML = "0"
+//currentStretch.innerHTML = "0"
 
-nextStretch.innerHTML = "six"
+//nextStretch.innerHTML = "six"
 
 function compare(myList) {
     current = myList;
@@ -63,20 +63,19 @@ function compare(myList) {
 
     console.log(min)
     console.log(String.fromCharCode('a'.charCodeAt(0) + index));
-    currentStretch.innerHTML = String.fromCharCode('a'.charCodeAt(0) + index) + ": " + min;
+//currentStretch.innerHTML = String.fromCharCode('a'.charCodeAt(0) + index) + ": " + min;
 }
 
 function setup() {
-    var canvas = createCanvas(640, 480);
- //    canvas.getContext("2d", {
- //      willReadFrequently: true,
- // });
-    // canvas.parent('frame');
+    var canvas = createCanvas(480, 640);
+    canvas.parent('frame');
     video = createCapture(VIDEO);
     video.size(windowWidth, windowHeight);
     console.log("setup")
     handpose = ml5.handpose(video, modelReady);
-  
+
+    document.getElementById('frame').firstChild.style.width = "100%"
+    document.getElementById('frame').firstChild.style.height = "100%"
     // This sets up an event that fills the global variable "predictions"
     // with an array every time new hand poses are detected
     handpose.on("predict", results => {
@@ -131,7 +130,7 @@ for (let i = 0; i < predictions.length; i += 1) {
     avgY /= averagePoints.length
     fill(255, 0, 0)
     ellipse(avgX, avgY, 10, 10);
-    nextStretch.innerHTML = "X Pos: " + xStrings + "Y Pos: " + yStrings + "\n" + String(avgX) + ", " +  String(avgY)
+    //nextStretch.innerHTML = "X Pos: " + xStrings + "Y Pos: " + yStrings + "\n" + String(avgX) + ", " +  String(avgY)
 
     for (let j = 0; j < prediction.landmarks.length; j += 1) {
     const keypoint = prediction.landmarks[j];
