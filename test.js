@@ -54,7 +54,7 @@ function compare(myList) {
 }
 
 function setup() {
-    var canvas = createCanvas(640, 480);
+    var canvas = createCanvas(480, 640);
     canvas.parent('frame');
     video = createCapture(VIDEO);
     video.size(windowWidth, windowHeight);
@@ -88,7 +88,7 @@ function getAngle(Ax, Ay, Bx, By, Cx, Cy){
 }
 
 function draw() {
-    rotate(0)
+    
     image(video, 0, 0, width, height);
     if(!loadeded){
         fill(255, 255, 255)
@@ -99,7 +99,7 @@ function draw() {
         stroke(0, 0, 0)
         text('Loading...', 340, 240);
     } else {
-        rotate(-0.1)
+       
     drawKeypoints()
     }
 }
