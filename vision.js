@@ -24,10 +24,46 @@ workoutIdeals = {
 
 }
 
+letterIdeals = [
+    [100, 180, 70, 20, 60, 120], //a
+    [90, 80, 280, 320, 300, 230], //b
+    [80, 150, 170, 180, 180, 170],
+    [60, 30, 210, 5, 20, 40],
+    [120, 130, 180, 160, 140, 140], //e
+]
+
 
 currentStretch.innerHTML = "0"
 
 nextStretch.innerHTML = "six"
+
+function compare(myList) {
+    // current1 = 100;
+    // current4 = 180;
+    // current8 = 70;
+    // current12 = 20;
+    // current16 = 60;
+    // current20 = 120;
+    current = myList;
+    
+    let index = 0;
+    let min = 1000;
+    for (let i = 0; i < letterIdeals.length; i++){
+        let temp = 0;
+        for (let j = 1; j < current.length; i++){
+            temp += (current[j] / current[0] - letterIdeals[i][j] / letterIdeals[i][0]) / (letterIdeals[i][j] / letterIdeals[i][0]) ** 2;
+        }
+
+        if (temp < min){
+            min = temp;
+            index = i;
+        }       
+    }
+
+    console.log(min)
+    console.log(String.fromCharCode('a'.charCodeAt(0) + index));
+    currentStretch.innerHTML = String.fromCharCode('a'.charCodeAt(0) + index)
+}
 
 function setup() {
     createCanvas(640, 480);
@@ -80,8 +116,9 @@ function draw() {
 function drawKeypoints() {
 good = [0, 1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19]
 averagePoints = [0, 1, 2, 5, 9, 17]
-goodDistance = []
+goodDistance = [1, 4, 8, 12, 16, 20]
 for (let i = 0; i < predictions.length; i += 1) {
+    myList = []
     const prediction = predictions[i];
     
     avgX = 0
@@ -105,7 +142,9 @@ for (let i = 0; i < predictions.length; i += 1) {
     const keypoint = prediction.landmarks[j];
     fill(255,255,255);
 
-    textSize(12)
+    if (goodDistance.includes(j)){
+        myList.push(distance(avgX, avgY, keypoint[0], keypoint[1]))
+    }
     text((String(j) + ": " + String(distance(avgX, avgY, keypoint[0], keypoint[1]))),keypoint[0], keypoint[1] + 20);
     
 
@@ -115,8 +154,9 @@ for (let i = 0; i < predictions.length; i += 1) {
     }
     stroke(0,0,0);
     ellipse(keypoint[0], keypoint[1], 10, 10);
-    // ellipse(keypoint[0], keypoint[1], 10, 10);
     }
+    //call quality functions here
+    
     const keypoint0 = prediction.landmarks[0];
     const keypoint2 = prediction.landmarks[2];
     const keypoint4 = prediction.landmarks[4];
