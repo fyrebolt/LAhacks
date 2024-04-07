@@ -58,6 +58,14 @@ button{
     transform: translateY(-100vh);
     transition: 1.5s ease;
 }
+#corner{
+    z-index:1;
+    width:90px;
+    position:fixed;
+    right:0;
+    bottom:0;
+    margin:10px;
+}
 #appName{
     margin:10px 10px;
     font-size:45px;
@@ -103,22 +111,21 @@ button{
 #subtitle{
     background-color:rgba(0,17,34,255);
 /*     //border-top: solid rgb(252, 255, 209) 4px; */
-    border-bottom: solid rgb(252, 255, 209) 4px;
+    border-bottom: solid rgb(252, 255, 209) 2px;
     height:10%;
     width:100%;
 }
 #ref{
     font-size:24px;
     color:rgb(252, 255, 209);
-    padding: 5px 0px;
+    padding: 10px 0px;
 }
 #left{
-    align-items:center;
+    align-items:start;
     padding-bottom:10px;
 }
 #right{
-    align-items:center;
-    justify-content:space-between;
+    align-items:start;
     padding-top:10px;
 }
 .a{
