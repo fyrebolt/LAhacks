@@ -96,7 +96,7 @@ function draw() {
 
 function drawKeypoints() {
 good = [0, 1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19]
-averagePoints = [0, 1, 2, 5, 9, 13, 17]
+averagePoints = [0, 1, 5, 17]
 goodDistance = []
 for (let i = 0; i < predictions.length; i += 1) {
     const prediction = predictions[i];
