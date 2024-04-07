@@ -1,7 +1,7 @@
 {
-    "name": "App Name",
-    "start_url": "/altos2024/index.html",
-    "scope": "/altos2024/",
+    "name": "SignSync",
+    "start_url": "/LAhacks/index.html",
+    "scope": "/LAhacks/",
     "display": "standalone", 
     "icons": [
         {
