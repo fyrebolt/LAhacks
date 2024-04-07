@@ -78,7 +78,9 @@ function modelReady(){
     console.log("loaded")
 }
 
-
+function distance(x1, y1, x2, y2) {
+    return Math.sqrt((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2))
+}
 
 function getAngle(Ax, Ay, Bx, By, Cx, Cy){
     b=Math.sqrt((Ax - Bx)**2 + (Ay - By)**2)
@@ -89,14 +91,43 @@ function getAngle(Ax, Ay, Bx, By, Cx, Cy){
 
 function draw() {
     image(video, 0, 0, width, height);
-    console.log("draw")
     drawKeypoints()
 }
 
 function drawKeypoints() {
 good = [0, 1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19]
+averagePoints = [0, 1, 2, 5, 9, 13, 17]
+goodDistance = []
 for (let i = 0; i < predictions.length; i += 1) {
     const prediction = predictions[i];
+    
+    avgX = 0
+    avgY = 0
+    for (j in averagePoints) {
+        const keypoint = prediction.landmarks[j];
+        avgX += keypoint[0]
+        avgY += keypoint[1]
+    }
+    avgX /= 7
+    avgY /= 7
+    ellipse(avgX, avgY, 10, 10);
+
+    for (let j = 0; j < prediction.landmarks.length; j += 1) {
+    const keypoint = prediction.landmarks[j];
+    fill(0,0,0);
+
+
+    text((String(j) + String(distance(avgX, avgY, keypoint[0], keypoint[1]))),keypoint[0], keypoint[1] + 20);
+    
+
+    if (good.includes(j)){
+        const keypoint1 = prediction.landmarks[j+1];
+        line(keypoint[0], keypoint[1], keypoint1[0], keypoint1[1])
+    }
+    stroke(255,150,0);
+    ellipse(keypoint[0], keypoint[1], 10, 10);
+    // ellipse(keypoint[0], keypoint[1], 10, 10);
+    }
     const keypoint0 = prediction.landmarks[0];
     const keypoint2 = prediction.landmarks[2];
     const keypoint5 = prediction.landmarks[5];
@@ -108,19 +139,6 @@ for (let i = 0; i < predictions.length; i += 1) {
     line(keypoint13[0], keypoint13[1], keypoint9[0], keypoint9[1])
     line(keypoint9[0], keypoint9[1], keypoint5[0], keypoint5[1])
     line(keypoint5[0], keypoint5[1], keypoint2[0], keypoint2[1])
-    for (let j = 0; j < prediction.landmarks.length; j += 1) {
-    console.log(prediction.landmarks.length)
-    const keypoint = prediction.landmarks[j];
-    fill(0,0,0);
-    text(j,keypoint[0], keypoint[1] + 20);
-    //console.log(i)
-    if (good.includes(j)){
-        const keypoint1 = prediction.landmarks[j+1];
-        line(keypoint[0], keypoint[1], keypoint1[0], keypoint1[1])
-    }
-    stroke(255,150,0);
-    ellipse(keypoint[0], keypoint[1], 10, 10);
-    // ellipse(keypoint[0], keypoint[1], 10, 10);
-    }
+
 }
 }
