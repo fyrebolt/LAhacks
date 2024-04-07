@@ -60,9 +60,6 @@ document.addEventListener('DOMContentLoaded', function (event) {
 button.onclick = async (event) => {
     event.preventDefault()
     wrapper.style.transform = "translateY(100vh)";
-    // var msg = new SpeechSynthesisUtterance();
-    // msg.text = "i love men";
-    window.speechSynthesis.speak(msg);
     setTimeout(function(){
         wrapper.style.display = "none";
         page2.style.transform = "translateY(0vh)"; 
