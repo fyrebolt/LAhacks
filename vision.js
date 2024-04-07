@@ -2,8 +2,10 @@ let handpose;
 let video;
 let predictions = [];
 let sparkleArray = [];
+let tickCounter = 0;
+let allSubs = "";
 
-// const timer = document.getElementById("timer")
+const subtitle = document.getElementById("subtitle")
 // const currentStretch = document.getElementById("currentStretch")
 // const nextStretch = document.getElementById("nextStretch")
 // const accuracy = document.getElementById("accuracy")
@@ -52,7 +54,7 @@ function compare(myList) {
         let temp = 0;
         for (let j = 1; j < current.length; j++){
             temp += ((current[j] / current[0] - letterIdeals[i][j] / letterIdeals[i][0]) / ((letterIdeals[i][j]+20) / (letterIdeals[i][0]+20))) ** 2;
-            console.log(String.fromCharCode('a'.charCodeAt(0) + i) + "," + j + ": " + ((current[j] / current[0] - letterIdeals[i][j] / letterIdeals[i][0]) / (letterIdeals[i][j] / letterIdeals[i][0])) ** 2);
+            //console.log(String.fromCharCode('a'.charCodeAt(0) + i) + "," + j + ": " + ((current[j] / current[0] - letterIdeals[i][j] / letterIdeals[i][0]) / (letterIdeals[i][j] / letterIdeals[i][0])) ** 2);
         }
 
         if (temp < min){
@@ -150,6 +152,15 @@ for (let i = 0; i < predictions.length; i += 1) {
     }
     stroke(0,0,0);
     ellipse(keypoint[0], keypoint[1], 10, 10);
+    }
+    tickCounter++;
+    
+    if (tickCounter > 9){
+        tickCounter = 0;
+        if (predictions.length > 0){
+            allSubs += String(compare(myList))
+            subtitle.innerHTML = allSubs
+        }
     }
     //call quality functions here
     
