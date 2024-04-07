@@ -88,7 +88,7 @@ function getAngle(Ax, Ay, Bx, By, Cx, Cy){
 }
 
 function draw() {
-    rotate(PI / 2)
+    rotate(0)
     image(video, 0, 0, width, height);
     if(!loadeded){
         fill(255, 255, 255)
@@ -99,6 +99,7 @@ function draw() {
         stroke(0, 0, 0)
         text('Loading...', 340, 240);
     } else {
+        rotate(-0.1)
     drawKeypoints()
     }
 }
