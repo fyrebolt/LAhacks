@@ -66,9 +66,9 @@ function compare(myList) {
 
 function setup() {
     var canvas = createCanvas(640, 480);
-    canvas.getContext("2d", {
-      willReadFrequently: true,
- });
+ //    canvas.getContext("2d", {
+ //      willReadFrequently: true,
+ // });
     // canvas.parent('frame');
     video = createCapture(VIDEO);
     video.size(windowWidth, windowHeight);
