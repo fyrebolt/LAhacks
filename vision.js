@@ -71,8 +71,8 @@ function compare(myList) {
 }
 
 function setup() {
-    var canvas = createCanvas(640, 480);
-    //mobile var canvas = createCanvas(480, 640);
+    //var canvas = createCanvas(640, 480);
+     var canvas = createCanvas(480, 640);
     canvas.parent('frame');
     video = createCapture(VIDEO);
     video.size(windowWidth, windowHeight);
