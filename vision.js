@@ -157,7 +157,7 @@ for (let i = 0; i < predictions.length; i += 1) {
     }
     tickCounter++;
     
-    if (tickCounter > 17){
+    if (tickCounter > 39){
         tickCounter = 0;
         if (predictions.length > 0){
             temp = String(compare(myList))
