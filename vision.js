@@ -96,7 +96,7 @@ function draw() {
 
 function drawKeypoints() {
 good = [0, 1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19]
-averagePoints = [0, 1, 5, 17]
+averagePoints = [0, 1, 2, 5, 9, 17]
 goodDistance = []
 for (let i = 0; i < predictions.length; i += 1) {
     const prediction = predictions[i];
@@ -105,7 +105,7 @@ for (let i = 0; i < predictions.length; i += 1) {
     avgY = 0
     xStrings = ""
     yStrings = ""
-    for (j in averagePoints) {
+    for (let j = 0; j < averagePoints.length; j += 1) {
         const keypoint = prediction.landmarks[j];
         avgX += keypoint[0]
         xStrings += String(Math.round(keypoint[0])) + ", " 
