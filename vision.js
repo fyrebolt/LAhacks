@@ -4,12 +4,10 @@ let predictions = [];
 let sparkleArray = [];
 let tickCounter = 0;
 let allSubs = "";
+let lastSentance = "";
 
 const subtitle = document.getElementById("subtitle")
-// const currentStretch = document.getElementById("currentStretch")
-// const nextStretch = document.getElementById("nextStretch")
-// const accuracy = document.getElementById("accuracy")
-// const done2 = document.getElementById("done2")
+
 
 letterIdeals = [
     [100, 180, 70, 20, 60, 120], //a
@@ -37,13 +35,10 @@ letterIdeals = [
     [70, 70, 220, 230, 220, 50], //w
     [300, 300, 300, 300, 300, 300], // -x
     [300, 300, 300, 300, 300, 300], // -y
-    [300, 300, 300, 300, 300, 300] // -z
+    [300, 300, 300, 300, 300, 300], // -z
+    [60, 120, 160, 170, 160, 145], // " "
+    [40, 90, 90, 60, 15, 31] //.
 ]
-
-
-//currentStretch.innerHTML = "0"
-
-//nextStretch.innerHTML = "six"
 
 function compare(myList) {
     current = myList;
@@ -64,7 +59,14 @@ function compare(myList) {
     }
 
     console.log(min)
-    console.log(String.fromCharCode('a'.charCodeAt(0) + index));
+    ans = String(String.fromCharCode('a'.charCodeAt(0) + index))
+    if (ans == "{"){
+        ans = " "
+    }
+    if (ans == "|"){
+        ans = "."
+    }
+    return ans;
 //currentStretch.innerHTML = String.fromCharCode('a'.charCodeAt(0) + index) + ": " + min;
 }
 
@@ -87,7 +89,7 @@ function setup() {
   
     // Hide the video element, and just show the canvas
     video.hide();
-  }
+}
 
 function modelReady(){
     console.log("loaded")
@@ -98,17 +100,17 @@ function distance(x1, y1, x2, y2) {
     return Math.round(Math.sqrt((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2)))
 }
 
-function getAngle(Ax, Ay, Bx, By, Cx, Cy){
-    b=Math.sqrt((Ax - Bx)**2 + (Ay - By)**2)
-    a=Math.sqrt((Cx - Bx)**2 + (Cy - By)**2)
-    c=Math.sqrt((Ax - Cx)**2 + (Ay - Cy)**2)
-    return 57.3 * Math.acos((a**2 + b**2 - c**2) / (2 * a * b))
+function yell(toYell){
+    var msg = new SpeechSynthesisUtterance();
+    msg.text = toYell;
+    window.speechSynthesis.speak(msg);
 }
 
 function draw() {
     image(video, 0, 0, width, height);
     drawKeypoints()
 }
+
 
 function drawKeypoints() {
 good = [0, 1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19]
@@ -155,11 +157,22 @@ for (let i = 0; i < predictions.length; i += 1) {
     }
     tickCounter++;
     
-    if (tickCounter > 9){
+    if (tickCounter > 17){
         tickCounter = 0;
         if (predictions.length > 0){
-            allSubs += String(compare(myList))
+            temp = String(compare(myList))
+            if (lastSentance == ""){
+                allSubs += toUpperCase(temp)
+            } else{
+                allSubs += temp
+            }
+            lastSentance += temp
             subtitle.innerHTML = allSubs
+            if (temp == ".") {
+                yell(lastSentance)
+                lastSentance = "";
+                allSubs += " "
+            }
         }
     }
     //call quality functions here
