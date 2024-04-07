@@ -10,26 +10,17 @@ const nextStretch = document.getElementById("nextStretch")
 const accuracy = document.getElementById("accuracy")
 const done2 = document.getElementById("done2")
 
-workoutIdeals = {
-    "butterfly": [40, 40, 74, 100, 100],
-    "downwarddog": [160, 160, 125, 25, 25],
-    "crescent": [90, 140, 160, 180, 180],
-    "easy": [50, 50, 75, 100, 100],
-    "triangle": [180, 180, 150, 50, 150],
-    "reversewarrior": [160, 180, 83, 180, 50],
-    "tree": [40, 170, 170, 90, 90],
-    "warrior1": [180, 180, 145, 90, 90],
-    "warrior2": [127, 170, 133, 90, 90],
-    "warrior3": [160, 160, 130, 120, 120],
-
-}
-
 letterIdeals = [
     [100, 180, 70, 20, 60, 120], //a
     [90, 80, 280, 320, 300, 230], //b
-    [80, 150, 170, 180, 180, 170],
-    [60, 30, 210, 5, 20, 40],
+    [80, 150, 170, 180, 180, 170], //c
+    [60, 30, 210, 15, 20, 40], //d
     [120, 130, 180, 160, 140, 140], //e
+    [65, 40, 55, 220, 210, 180] //f
+    [30, 120, 220, 100, 85, 85] //g
+    
+
+
 ]
 
 
@@ -45,7 +36,7 @@ function compare(myList) {
     for (let i = 0; i < letterIdeals.length; i++){
         let temp = 0;
         for (let j = 1; j < current.length; j++){
-            temp += ((current[j] / current[0] - letterIdeals[i][j] / letterIdeals[i][0]) / (letterIdeals[i][j] / letterIdeals[i][0])) ** 2;
+            temp += ((current[j] / current[0] - letterIdeals[i][j] / letterIdeals[i][0]) / ((letterIdeals[i][j]+20) / (letterIdeals[i][0]+20))) ** 2;
             console.log(String.fromCharCode('a'.charCodeAt(0) + i) + "," + j + ": " + ((current[j] / current[0] - letterIdeals[i][j] / letterIdeals[i][0]) / (letterIdeals[i][j] / letterIdeals[i][0])) ** 2);
         }
 
