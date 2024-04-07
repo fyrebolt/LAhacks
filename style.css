@@ -113,11 +113,12 @@ button{
     padding: 5px 0px;
 }
 #left{
-    align-items:start;
+    align-items:center;
     padding-bottom:10px;
 }
 #right{
-    align-items:start;
+    align-items:center;
+    justify-content:space-between;
     padding-top:10px;
 }
 .a{
