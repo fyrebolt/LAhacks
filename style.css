@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap');
+@font-face {
+    font-family: 'ASL';
+    src: url('asl.eot'),
+         url('asl.ttf') format('truetype'),
+         url('asl.woff') format('woff');
+}
+
+html{
+    height:100%;
+}
+body{
+    color: #fcffd1;
+    margin:0px;
+    height:100%;
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:start;
+    font-family: "Red Hat Display";
+    background: url(background.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+p{
+    margin:0px;
+}
+div{
+    display:flex;
+    margin:0px;
+}
+button{
+    display:flex;
+    margin:0px;
+}
+.row{
+    flex-direction:row;
+}
+.col{
+    flex-direction:column;
+}
+#wrapper{
+    width:100%;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    height:100%;
+    background-color:rgba(0,0,0,0);
+    opacity:0;
+    transform: translateY(-100vh);
+    transition: 1.5s ease;
+}
+#appName{
+    margin:10px 10px;
+    font-size:45px;
+    font-weight:900;
+    /* color:rgb(48, 48, 48); */
+}
+#appDesc{
+    margin:10px 10px;
+    font-size:24px;
+    font-weight:600;
+    /* color:rgb(48, 48, 48); */
+}
+#button{
+    padding:10px;
+    text-align:center;
+    justify-content:center;
+    font-family: "Red Hat Display";
+    width:80%;
+    margin:40px 0px 0px 0px;
+    font-size:20px;
+    font-weight:bold;
+    color:rgb(252, 255, 209);
+    background: rgb(78,78,78);
+    background: linear-gradient(135deg, rgba(78,78,78,1) 0%, rgba(40,40,40,1) 100%);
+    border:none;
+    border-radius:20px;
+}
+#logo{
+    width:75px;
+    margin:10px;
+}
+#page2{
+    opacity:1;
+    align-items:space-between;
+    background-color:white;
+    height:100%;
+    width:100%;
+    transform: translateY(-100vh);
+    transition: 0.75s ease;
+}
+.hidden{
+    opacity:0;
+
+
+span {
+    border-right: .05em solid;
+    animation: caret 1s steps(1) infinite;
+}
+
+@keyframes caret {
+    50% {
+        border-color: transparent;
+    }
+}
