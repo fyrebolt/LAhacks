@@ -5,8 +5,8 @@
     "display": "standalone", 
     "icons": [
         {
-          "src": "logo.svg",
-          "type": "image/svg",
+          "src": "logo1.png",
+          "type": "image/png",
           "sizes": "700x700"
         }
     ]
