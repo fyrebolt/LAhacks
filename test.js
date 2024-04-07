@@ -60,7 +60,9 @@ function setup() {
     video.size(windowWidth, windowHeight);
     console.log("setup")
     handpose = ml5.handpose(video, modelReady);
-    
+
+    document.getElementById('frame').firstChild.style.width = "100%"
+    document.getElementById('frame').firstChild.style.height = "100%"
     // This sets up an event that fills the global variable "predictions"
     // with an array every time new hand poses are detected
     handpose.on("predict", results => {
