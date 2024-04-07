@@ -57,7 +57,7 @@ function setup() {
     var canvas = createCanvas(640, 480);
     canvas.parent('frame');
     video = createCapture(VIDEO);
-    video.size(windowWidth, windowHeight);
+    video.size(640, 480);
     console.log("setup")
     handpose = ml5.handpose(video, modelReady);
     
