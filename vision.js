@@ -110,8 +110,18 @@ function draw() {
     image(video, 0, 0, width, height);
     drawKeypoints()
 }
-
-
+let speed = 39;
+document.getElementById("slider").onchange = () =>{
+    if(document.getElementById("slider").value == 0){
+        speed = 59
+    }
+    else if(document.getElementById("slider").value == 1){
+        speed = 39
+    }
+    else{
+        speed = 18
+    }
+}
 function drawKeypoints() {
 good = [0, 1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19]
 averagePoints = [0, 1, 2, 5, 9, 17]
@@ -157,7 +167,7 @@ for (let i = 0; i < predictions.length; i += 1) {
     }
     tickCounter++;
     
-    if (tickCounter > 39){
+    if (tickCounter > speed){
         tickCounter = 0;
         if (predictions.length > 0){
             temp = String(compare(myList))
