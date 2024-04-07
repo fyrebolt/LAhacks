@@ -108,13 +108,14 @@ for (let i = 0; i < predictions.length; i += 1) {
         avgX += keypoint[0]
         avgY += keypoint[1]
     }
-    avgX /= 7
-    avgY /= 7
+    avgX /= averagePoints.length
+    avgY /= averagePoints.length
+    fill(255, 0, 0)
     ellipse(avgX, avgY, 10, 10);
 
     for (let j = 0; j < prediction.landmarks.length; j += 1) {
     const keypoint = prediction.landmarks[j];
-    fill(0,0,0);
+    fill(255,255,255);
 
 
     text((String(j) + ": " + String(distance(avgX, avgY, keypoint[0], keypoint[1]))),keypoint[0], keypoint[1] + 20);
@@ -124,13 +125,15 @@ for (let i = 0; i < predictions.length; i += 1) {
         const keypoint1 = prediction.landmarks[j+1];
         line(keypoint[0], keypoint[1], keypoint1[0], keypoint1[1])
     }
-    stroke(255,150,0);
+    stroke(0,0,0);
     ellipse(keypoint[0], keypoint[1], 10, 10);
     // ellipse(keypoint[0], keypoint[1], 10, 10);
     }
     const keypoint0 = prediction.landmarks[0];
     const keypoint2 = prediction.landmarks[2];
+    const keypoint4 = prediction.landmarks[4];
     const keypoint5 = prediction.landmarks[5];
+    const keypoint8 = prediction.landmarks[8];
     const keypoint9 = prediction.landmarks[9];
     const keypoint13 = prediction.landmarks[13];
     const keypoint17 = prediction.landmarks[17];
@@ -139,6 +142,6 @@ for (let i = 0; i < predictions.length; i += 1) {
     line(keypoint13[0], keypoint13[1], keypoint9[0], keypoint9[1])
     line(keypoint9[0], keypoint9[1], keypoint5[0], keypoint5[1])
     line(keypoint5[0], keypoint5[1], keypoint2[0], keypoint2[1])
-
+    currentStretch.innerHTML = getAngle(keypoint4[0], keypoint4[1], keypoint2[0], keypoint2[1], keypoint5[0], keypoint5[1])
 }
 }
