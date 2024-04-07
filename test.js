@@ -125,8 +125,7 @@ for (let i = 0; i < predictions.length; i += 1) {
     avgY /= averagePoints.length
     fill(255, 0, 0)
     ellipse(avgX, avgY, 10, 10);
-    nextStretch.innerHTML = "X Pos: " + xStrings + "Y Pos: " + yStrings + "\n" + String(avgX) + ", " +  String(avgY)
-
+    
     for (let j = 0; j < prediction.landmarks.length; j += 1) {
     const keypoint = prediction.landmarks[j];
     fill(255,255,255);
