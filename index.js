@@ -11,7 +11,7 @@ function load(){
 
 document.addEventListener('DOMContentLoaded', function (event) {
     // array with texts to type in typewriter
-    var dataText = ['NotDeafLink', 'NotDeafLink', 'NotDeafLink'];
+    var dataText = ['SignSync', 'SignSync', 'SignSync'];
 
     // type one text in the typwriter
     // keeps calling itself until the text is finished
