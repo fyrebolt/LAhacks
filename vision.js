@@ -66,7 +66,10 @@ function compare(myList) {
 }
 
 function setup() {
-    createCanvas(640, 480);
+    var canvas = createCanvas(640, 480);
+    canvas.getContext("2d", {
+      willReadFrequently: true,
+ });
     // canvas.parent('frame');
     video = createCapture(VIDEO);
     video.size(windowWidth, windowHeight);
