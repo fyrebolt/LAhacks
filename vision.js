@@ -88,8 +88,6 @@ function getAngle(Ax, Ay, Bx, By, Cx, Cy){
 }
 
 function draw() {
-    translate(video.width, 0)
-    scale(-1, 1)
     image(video, 0, 0, width, height);
     console.log("draw")
     drawKeypoints()
