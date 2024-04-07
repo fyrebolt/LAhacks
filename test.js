@@ -4,7 +4,6 @@ let predictions = [];
 let sparkleArray = [];
 let loadeded = false;
 
-console.log("kugkgu")
 
 workoutIdeals = {
     "butterfly": [40, 40, 74, 100, 100],
@@ -55,7 +54,7 @@ function compare(myList) {
 }
 
 function setup() {
-    createCanvas(640, 480);
+    var canvas = createCanvas(640, 480);
     canvas.parent('frame');
     video = createCapture(VIDEO);
     video.size(windowWidth, windowHeight);
