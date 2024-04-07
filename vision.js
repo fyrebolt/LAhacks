@@ -38,20 +38,15 @@ currentStretch.innerHTML = "0"
 nextStretch.innerHTML = "six"
 
 function compare(myList) {
-    // current1 = 100;
-    // current4 = 180;
-    // current8 = 70;
-    // current12 = 20;
-    // current16 = 60;
-    // current20 = 120;
     current = myList;
     
     let index = 0;
     let min = 1000;
     for (let i = 0; i < letterIdeals.length; i++){
         let temp = 0;
-        for (let j = 1; j < current.length; i++){
-            temp += (current[j] / current[0] - letterIdeals[i][j] / letterIdeals[i][0]) / (letterIdeals[i][j] / letterIdeals[i][0]) ** 2;
+        for (let j = 1; j < current.length; j++){
+            temp += ((current[j] / current[0] - letterIdeals[i][j] / letterIdeals[i][0]) / (letterIdeals[i][j] / letterIdeals[i][0])) ** 2;
+            console.log(String.fromCharCode('a'.charCodeAt(0) + i) + "," + j + ": " + ((current[j] / current[0] - letterIdeals[i][j] / letterIdeals[i][0]) / (letterIdeals[i][j] / letterIdeals[i][0])) ** 2;
         }
 
         if (temp < min){
@@ -62,7 +57,7 @@ function compare(myList) {
 
     console.log(min)
     console.log(String.fromCharCode('a'.charCodeAt(0) + index));
-    currentStretch.innerHTML = String.fromCharCode('a'.charCodeAt(0) + index)
+    currentStretch.innerHTML = String.fromCharCode('a'.charCodeAt(0) + index) + ": " + min;
 }
 
 function setup() {
@@ -170,6 +165,7 @@ for (let i = 0; i < predictions.length; i += 1) {
     line(keypoint13[0], keypoint13[1], keypoint9[0], keypoint9[1])
     line(keypoint9[0], keypoint9[1], keypoint5[0], keypoint5[1])
     line(keypoint5[0], keypoint5[1], keypoint2[0], keypoint2[1])
-    currentStretch.innerHTML = getAngle(keypoint4[0], keypoint4[1], keypoint2[0], keypoint2[1], keypoint5[0], keypoint5[1])
+    // compare(myList);
+    // currentStretch.innerHTML = getAngle(keypoint4[0], keypoint4[1], keypoint2[0], keypoint2[1], keypoint5[0], keypoint5[1])
 }
 }
