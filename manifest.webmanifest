@@ -1,11 +1,11 @@
 {
     "name": "App Name",
-    "start_url": "/LAhacks/index.html",
-    "scope": "/LAhacks/",
+    "start_url": "/altos2024/index.html",
+    "scope": "/altos2024/",
     "display": "standalone", 
     "icons": [
         {
-          "src": "images/logo.png",
+          "src": "logo.png",
           "type": "image/png",
           "sizes": "700x700"
         }

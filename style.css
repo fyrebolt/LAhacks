@@ -3,10 +3,12 @@ html{
     height:100%;
 }
 body{
-    color: white;
     margin:0px;
     height:100%;
+    width:100%;
     display:flex;
+    flex-direction:column;
+    justify-content:start;
     font-family: "Red Hat Display";
     background: url(background.svg);
     background-repeat: no-repeat;
@@ -35,22 +37,23 @@ button{
     align-items:center;
     justify-content:center;
     text-align:center;
+    height:100%;
     background-color:rgba(0,0,0,0);
     opacity:0;
-    transform: translateY(-600px);
+    transform: translateY(-100vh);
     transition: 1.5s ease;
 }
 #appName{
     margin:10px 10px;
     font-size:45px;
     font-weight:900;
-    /* color:rgb(48, 48, 48); */
+    color:rgb(48, 48, 48);
 }
 #appDesc{
     margin:10px 10px;
     font-size:24px;
     font-weight:600;
-    /* color:rgb(48, 48, 48); */
+    color:rgb(48, 48, 48);
 }
 #button{
     padding:10px;
@@ -61,9 +64,9 @@ button{
     margin:40px 0px 0px 0px;
     font-size:20px;
     font-weight:bold;
-color: white;
+    color:rgb(252, 255, 209);
     background: rgb(78,78,78);
-background: linear-gradient(135deg, rgba(78,78,78,1) 0%, rgba(40,40,40,1) 100%);
+    background: linear-gradient(135deg, rgba(78,78,78,1) 0%, rgba(40,40,40,1) 100%);
     border:none;
     border-radius:20px;
 }
@@ -72,9 +75,13 @@ background: linear-gradient(135deg, rgba(78,78,78,1) 0%, rgba(40,40,40,1) 100%);
     margin:10px;
 }
 #page2{
-    background-color:#001122;
+    opacity:1;
+    align-items:space-between;
+    background-color:white;
     height:100%;
-    
+    width:100%;
+    transform: translateY(-100vh);
+    transition: 0.75s ease;
 }
 .hidden{
     opacity:0;
