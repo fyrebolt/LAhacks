@@ -1,8 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap');
+@font-face {
+    font-family: 'ASL';
+    src: url('asl.eot'),
+         url('asl.ttf') format('truetype'),
+         url('asl.woff') format('woff');
+}
+
 html{
     height:100%;
 }
 body{
+    color: #fcffd1;
     margin:0px;
     height:100%;
     width:100%;
@@ -47,13 +55,13 @@ button{
     margin:10px 10px;
     font-size:45px;
     font-weight:900;
-    color:rgb(48, 48, 48);
+    /* color:rgb(48, 48, 48); */
 }
 #appDesc{
     margin:10px 10px;
     font-size:24px;
     font-weight:600;
-    color:rgb(48, 48, 48);
+    /* color:rgb(48, 48, 48); */
 }
 #button{
     padding:10px;
@@ -85,4 +93,15 @@ button{
 }
 .hidden{
     opacity:0;
+
+
+span {
+    border-right: .05em solid;
+    animation: caret 1s steps(1) infinite;
+}
+
+@keyframes caret {
+    50% {
+        border-color: transparent;
+    }
 }
