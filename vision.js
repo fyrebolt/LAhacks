@@ -79,7 +79,7 @@ function modelReady(){
 }
 
 function distance(x1, y1, x2, y2) {
-    return Math.sqrt((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2))
+    return Math.round(Math.sqrt((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2)))
 }
 
 function getAngle(Ax, Ay, Bx, By, Cx, Cy){
@@ -117,7 +117,7 @@ for (let i = 0; i < predictions.length; i += 1) {
     fill(0,0,0);
 
 
-    text((String(j) + String(distance(avgX, avgY, keypoint[0], keypoint[1]))),keypoint[0], keypoint[1] + 20);
+    text((String(j) + ": " + String(distance(avgX, avgY, keypoint[0], keypoint[1]))),keypoint[0], keypoint[1] + 20);
     
 
     if (good.includes(j)){
