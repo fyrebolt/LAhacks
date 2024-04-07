@@ -62,7 +62,7 @@ function compare(myList) {
 
 function setup() {
     createCanvas(640, 480);
-    canvas.parent('frame');
+    // canvas.parent('frame');
     video = createCapture(VIDEO);
     video.size(windowWidth, windowHeight);
     console.log("setup")
