@@ -4,7 +4,7 @@ let predictions = [];
 let sparkleArray = [];
 let loadeded = false;
 
-
+console.log("kugkgu")
 
 workoutIdeals = {
     "butterfly": [40, 40, 74, 100, 100],
