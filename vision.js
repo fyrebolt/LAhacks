@@ -162,7 +162,7 @@ for (let i = 0; i < predictions.length; i += 1) {
         if (predictions.length > 0){
             temp = String(compare(myList))
             if (lastSentance == ""){
-                allSubs += toUpperCase(temp)
+                allSubs += temp.toUpperCase()
             } else{
                 allSubs += temp
             }
