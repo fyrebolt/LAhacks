@@ -168,6 +168,7 @@ for (let i = 0; i < predictions.length; i += 1) {
     line(keypoint9[0], keypoint9[1], keypoint5[0], keypoint5[1])
     line(keypoint5[0], keypoint5[1], keypoint2[0], keypoint2[1])
     // compare(myList);
+    // hi
     // currentStretch.innerHTML = getAngle(keypoint4[0], keypoint4[1], keypoint2[0], keypoint2[1], keypoint5[0], keypoint5[1])
 }
 }
