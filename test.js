@@ -57,7 +57,7 @@ function setup() {
     var canvas = createCanvas(640, 480);
     canvas.parent('frame');
     video = createCapture(VIDEO);
-    video.size(640, 480);
+    video.size(windowWidth, windowHeight);
     console.log("setup")
     handpose = ml5.handpose(video, modelReady);
     
@@ -88,6 +88,7 @@ function getAngle(Ax, Ay, Bx, By, Cx, Cy){
 }
 
 function draw() {
+    rotate(PI / 2)
     image(video, 0, 0, width, height);
     if(!loadeded){
         fill(255, 255, 255)
