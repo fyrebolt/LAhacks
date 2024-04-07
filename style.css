@@ -5,12 +5,10 @@
          url('asl.ttf') format('truetype'),
          url('asl.woff') format('woff');
 }
-
 html{
     height:100%;
 }
 body{
-    color: #fcffd1;
     margin:0px;
     height:100%;
     width:100%;
@@ -18,10 +16,7 @@ body{
     flex-direction:column;
     justify-content:start;
     font-family: "Red Hat Display";
-    background: url(background.svg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+    background-color: rgba(0,17,34,255);
 }
 p{
     margin:0px;
@@ -40,13 +35,24 @@ button{
 .col{
     flex-direction:column;
 }
+#bigWrapper{
+    width:100%;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    height:100%;
+    transition: 0.75s ease;
+    background: url(background.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
 #wrapper{
     width:100%;
     align-items:center;
     justify-content:center;
     text-align:center;
     height:100%;
-    background-color:rgba(0,0,0,0);
     opacity:0;
     transform: translateY(-100vh);
     transition: 1.5s ease;
@@ -55,13 +61,13 @@ button{
     margin:10px 10px;
     font-size:45px;
     font-weight:900;
-    /* color:rgb(48, 48, 48); */
+    color:rgb(236, 236, 236);
 }
 #appDesc{
-    margin:10px 10px;
+    margin:20px 10px 0px 10px;
     font-size:24px;
     font-weight:600;
-    /* color:rgb(48, 48, 48); */
+    color:rgb(236, 236, 236);
 }
 #button{
     padding:10px;
@@ -69,7 +75,7 @@ button{
     justify-content:center;
     font-family: "Red Hat Display";
     width:80%;
-    margin:40px 0px 0px 0px;
+    margin:50px 0px 0px 0px;
     font-size:20px;
     font-weight:bold;
     color:rgb(252, 255, 209);
@@ -83,25 +89,60 @@ button{
     margin:10px;
 }
 #page2{
-    opacity:1;
-    align-items:space-between;
-    background-color:white;
+    display:none;
+    align-items:center;
+    background-color:rgba(0,17,34,255);
     height:100%;
     width:100%;
     transform: translateY(-100vh);
     transition: 0.75s ease;
 }
+#frame{
+    background-color: white;
+    height:50%;
+    width:100%;
+}
+#subtitle{
+    background-color:rgba(0,17,34,255);
+    border-top: solid rgb(252, 255, 209) 4px;
+    border-bottom: solid rgb(252, 255, 209) 4px;
+    height:10%;
+    width:100%;
+}
+#ref{
+    font-size:24px;
+    color:rgb(252, 255, 209);
+    padding: 5px 0px;
+}
+#left{
+    align-items:start;
+    padding-bottom:10px;
+}
+#right{
+    align-items:start;
+    padding-top:10px;
+}
+.a{
+    font-family: 'ASL';
+    color: rgb(252, 255, 209);
+    font-size: 60px;
+}
+.e{
+    font-family: 'Red Hat Display';
+    font-weight:600;
+    color: rgb(252, 255, 209);
+    padding:12.4px 0px;
+    font-size: 32px;
+}
+#dictionary{
+    background-color:rgba(0,17,34,255);
+    height:40%;
+    width:50%;
+    justify-content:space-evenly;
+    align-items:start;
+    
+    overflow:scroll;
+}
 .hidden{
     opacity:0;
-
-
-span {
-    border-right: .05em solid;
-    animation: caret 1s steps(1) infinite;
-}
-
-@keyframes caret {
-    50% {
-        border-color: transparent;
-    }
 }

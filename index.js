@@ -1,13 +1,13 @@
 const button = document.getElementById("button")
 const wrapper = document.getElementById("wrapper")
+const bigWrapper = document.getElementById("bigWrapper")
 const page2 = document.getElementById("page2")
 function load(){
-    wrapper.style.transform = "translateY(-25vh)";
+    wrapper.style.transform = "translateY(0vh)";
     wrapper.style.opacity = "1"
     wrapper.style.transition = "0.75 ease"
 }
    
-// TODO implement auth if we have extra time
 
 document.addEventListener('DOMContentLoaded', function (event) {
     // array with texts to type in typewriter
@@ -57,13 +57,22 @@ document.addEventListener('DOMContentLoaded', function (event) {
     StartTextAnimation(0);
 });
 
+
+
+
 button.onclick = async (event) => {
     event.preventDefault()
-    wrapper.style.transform = "translateY(100vh)";
+    bigWrapper.style.transform = "translateY(100vh)";
+    // var msg = new SpeechSynthesisUtterance();
+    // msg.text = "i love men";
+    // window.speechSynthesis.speak(msg);
     setTimeout(function(){
-        wrapper.style.display = "none";
-        page2.style.transform = "translateY(0vh)"; 
-        window.location = 'vision.html'
+        bigWrapper.style.display = "none";
+        page2.style.display = "flex";
+        setTimeout(function(){
+            page2.style.transform = "translateY(0vh)"; 
+        }, 750)
     }, 750)
+    
+    
 }
-
