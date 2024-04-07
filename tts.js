@@ -9,8 +9,9 @@ const params = {
 };
 
 polly.synthesizeSpeech(params, function(err, data) {
-  if (err) console.log(err, err.stack);
-  else {
+  if (err) {
+    console.log(err, err.stack);
+  } else {
     const audio = new Audio(URL.createObjectURL(new Blob([data.AudioStream])));
     audio.play();
   }
