@@ -2,7 +2,6 @@ let handpose;
 let video;
 let predictions = [];
 let sparkleArray = [];
-let loadeded = false;
 
 const timer = document.getElementById("timer")
 const currentStretch = document.getElementById("currentStretch")
@@ -104,17 +103,7 @@ function getAngle(Ax, Ay, Bx, By, Cx, Cy){
 
 function draw() {
     image(video, 0, 0, width, height);
-    if(!loadeded){
-        fill(255, 255, 255)
-        textSize(42)
-        textFont('Verdana');
-        filter(BLUR, 8);
-        textAlign(CENTER);
-        stroke(0, 0, 0)
-        text('Loading...', 340, 240);
-    } else {
     drawKeypoints()
-    }
 }
 
 function drawKeypoints() {
