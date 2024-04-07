@@ -103,15 +103,20 @@ for (let i = 0; i < predictions.length; i += 1) {
     
     avgX = 0
     avgY = 0
+    xStrings = ""
+    yStrings = ""
     for (j in averagePoints) {
         const keypoint = prediction.landmarks[j];
         avgX += keypoint[0]
+        xStrings += String(keypoint[0]) + ", " 
         avgY += keypoint[1]
+        yStrings += String(keypoint[1]) + ", "
     }
     avgX /= averagePoints.length
     avgY /= averagePoints.length
     fill(255, 0, 0)
     ellipse(avgX, avgY, 10, 10);
+    nextStretch.innerHTML = "X Pos: " + xString + "Y Pos: " + yString
 
     for (let j = 0; j < prediction.landmarks.length; j += 1) {
     const keypoint = prediction.landmarks[j];
