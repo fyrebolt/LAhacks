@@ -11,7 +11,7 @@ function load(){
 
 document.addEventListener('DOMContentLoaded', function (event) {
     // array with texts to type in typewriter
-    var dataText = ['NotDeafLink', 'NotDeafLink', 'NotDeafLink'];
+    var dataText = ['SignSync', 'SignSync', 'SignSync'];
 
     // type one text in the typwriter
     // keeps calling itself until the text is finished
@@ -44,8 +44,10 @@ document.addEventListener('DOMContentLoaded', function (event) {
             // text exists! start typewriter animation
             if (i == 1) {
                 document.getElementById("appName").style.fontFamily = 'ASL'
+                document.getElementById("appName").style.fontSize = '52px'
             } else {
                 document.getElementById("appName").style.fontFamily = 'Red Hat Display'
+                document.getElementById("appName").style.fontSize = '45px'
             }
             typeWriter(dataText[i], 0, function () {
                 // after callback (and whole text has been animated), start next text
@@ -63,17 +65,9 @@ document.addEventListener('DOMContentLoaded', function (event) {
 button.onclick = async (event) => {
     event.preventDefault()
     bigWrapper.style.transform = "translateY(100vh)";
-    // var msg = new SpeechSynthesisUtterance();
-    // msg.text = "i love men";
-    // window.speechSynthesis.speak(msg);
     setTimeout(function(){
         bigWrapper.style.display = "none";
-        page2.style.display = "flex";
-        setTimeout(function(){
-            page2.style.transform = "translateY(0vh)"; 
-            //window.location = 'vision.html'
-        }, 750)
-        //window.location = 'vision.html'
+        window.location.href="sign.html"
     }, 750)
     
     

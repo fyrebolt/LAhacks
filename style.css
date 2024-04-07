@@ -17,6 +17,7 @@ body{
     justify-content:start;
     font-family: "Red Hat Display";
     background-color: rgba(0,17,34,255);
+    overflow:hidden;
 }
 p{
     margin:0px;
@@ -89,13 +90,10 @@ button{
     margin:10px;
 }
 #page2{
-    display:none;
     align-items:center;
     background-color:rgba(0,17,34,255);
     height:100%;
     width:100%;
-    transform: translateY(-100vh);
-    transition: 0.75s ease;
 }
 #frame{
     background-color: white;
